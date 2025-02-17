@@ -1,0 +1,45 @@
+spring:
+ 
+  datasource:
+    url: ${ORACLE_DB_URL}
+    username: ${ORACLE_DB_USERNAME}
+    password: ${ORACLE_DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 120000
+      max-lifetime: 1800000
+      maximum-pool-size: 30
+      minimum-idle: 10
+      validation-timeout: 5000
+      data-source-properties:
+        oracle.jdbc.defaultConnectionValidation: LOCAL
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        format_sql: true
+        session_factory: org.hibernate.SessionFactory
+
+  output:
+    ansi:
+      enabled: always
+
+server:
+  port: 8015
+
+logging:
+  file:
+    name: logs/MediRecords.log
+    path: MediRecords
+  level:
+    com.geppetto: info
+    com.zaxxer.hikari.HikariConfig: INFO
+    com.zaxxer.hikari: INFO
+  pattern:
+    dateformat: "dd-MM-yyyy hh:mm:ss aa"
