@@ -1,0 +1,5 @@
+*.class
+*.jar
+*.yml
+*.lst
+.idea/workspace.xml
